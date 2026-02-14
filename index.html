@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Examen de Conducir</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxicons for icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <div class="container active">
+        <!-- Header -->
+        <header class="hidden">
+            <div class="header-top">
+                <button class="back-btn"><i class='bx bx-arrow-back'></i></button>
+                <div class="title">B2b</div>
+                <div class="spacer" style="width: 24px;"></div> <!-- Spacer to center title -->
+            </div>
+            <div class="header-bottom">
+                <div class="timer">
+                    <i class='bx bx-time'></i>
+                    <span class="time-sec">29:23</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill"></div>
+                </div>
+                <div class="total-que">1/40</div>
+            </div>
+        </header>
+
+        <!-- Login Section -->
+        <div class="login-section">
+            <div class="icon">
+                <i class='bx bx-user-circle'></i>
+            </div>
+            <h3>Bienvenido</h3>
+            <p>Ingresa tu nombre para comenzar</p>
+            <input type="text" id="userNameInput" placeholder="Tu Nombre">
+            <button class="btn start-btn" onclick="login()">
+                Ingresar
+            </button>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div class="dashboard-section hidden">
+            <h2 class="user-welcome">Hola, <span id="displayUserName">Conductor</span></h2>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h4>Exámenes</h4>
+                    <div class="value" id="statTaken">0</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Aprobados</h4>
+                    <div class="value" id="statPassed" style="color: var(--success-color);">0</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Desaprobados</h4>
+                    <div class="value" id="statFailed" style="color: var(--incorrect-border);">0</div>
+                </div>
+            </div>
+
+            <div class="dashboard-actions">
+                <button class="btn start-btn" onclick="startQuiz()">
+                    <i class='bx bx-play'></i> Iniciar Simulacro
+                </button>
+                <button class="btn btn-outline" onclick="showBalotario()">
+                    <i class='bx bx-book'></i> Ver Balotario
+                </button>
+                <button class="btn btn-secondary" onclick="logout()">
+                    <i class='bx bx-log-out'></i> Cerrar Sesión
+                </button>
+            </div>
+        </div>
+
+        <!-- Balotario Section -->
+        <div class="balotario-section hidden">
+            <div class="balotario-header">
+                <button class="back-btn" onclick="showDashboard()"><i class='bx bx-arrow-back'></i></button>
+                <div class="title">Balotario</div>
+            </div>
+            <div class="balotario-list" id="balotarioList">
+                <!-- Questions will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-box hidden">
+            <div class="question-container">
+                <h2 class="question-text">
+                    <!-- Question goes here -->
+                </h2>
+
+                <div class="option-list">
+                    <!-- Options go here -->
+                </div>
+            </div>
+
+            <footer>
+                <button class="btn next-btn" disabled>Siguiente</button>
+            </footer>
+        </div>
+
+        <!-- Result Section -->
+        <div class="result-box hidden">
+            <div class="icon">
+                <i class='bx bx-crown'></i>
+            </div>
+            <div class="complete-text">¡Examen Completado!</div>
+            <div class="score-text">
+                <!-- Score Result -->
+            </div>
+            <div class="buttons">
+                <button class="btn start-btn" onclick="startQuiz()">Reiniciar</button>
+                <button class="btn btn-secondary" onclick="showDashboard()">Menú</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Questions Data -->
+    <script src="questions.js"></script>
+    <!-- Main Script -->
+    <script src="script.js"></script>
+</body>
+
+</html>
