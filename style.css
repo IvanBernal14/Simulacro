@@ -618,35 +618,113 @@ header {
 }
 
 /* Mobile Responsiveness */
+/* Mobile Responsiveness */
 @media (max-width: 600px) {
     body {
         padding: 0;
         background: var(--bg-card);
-        /* On mobile, full white bg usually looks cleaner for "app" feel */
+        overflow: hidden;
+        /* Prevent body scroll, handle inside container */
     }
 
     .container {
         border-radius: 0;
-        height: 100vh;
+        height: 100dvh;
+        /* Dynamic viewport height for mobile browsers */
+        max-height: 100dvh;
         max-width: 100%;
         box-shadow: none;
-        padding: 20px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header-top {
+        margin-bottom: 10px;
+    }
+
+    .header-bottom {
+        padding: 8px 12px;
+        margin-bottom: 15px;
+    }
+
+    .quiz-box {
+        flex-grow: 1;
+        overflow: hidden;
+        /* Ensure flex container doesn't overflow */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .question-container {
+        flex-grow: 1;
+        overflow-y: auto;
+        padding-bottom: 80px;
+        /* Extra space for scrolling past floating buttons if needed */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .question-text {
+        font-size: 15px;
+        margin-bottom: 15px;
+        line-height: 1.3;
+    }
+
+    .question-image {
+        max-height: 160px;
+        /* Smaller image on mobile */
+        margin: 10px 0;
+    }
+
+    .option {
+        padding: 12px 10px;
+        margin-bottom: 8px;
+    }
+
+    .option .letter-box {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+        margin-right: 10px;
+    }
+
+    .option .text-box {
+        font-size: 13px;
+    }
+
+    footer {
+        padding-top: 10px;
+        background: var(--bg-card);
+        z-index: 10;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.03);
+        /* Subtle separation */
+    }
+
+    .next-btn {
+        margin-top: 5px;
+        padding: 14px;
+        font-size: 15px;
     }
 
     .stats-container {
         grid-template-columns: 1fr;
-        /* Stack stats on mobile */
+        gap: 10px;
     }
 
     .stat-card {
-        display: flex;
+        padding: 15px;
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 20px;
         text-align: left;
     }
 
     .stat-card h4 {
         margin-bottom: 0;
+        font-size: 13px;
+    }
+
+    .stat-card .value {
+        font-size: 18px;
     }
 }
